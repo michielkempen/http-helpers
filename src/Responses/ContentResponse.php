@@ -3,8 +3,8 @@
 namespace MichielKempen\HttpHelpers\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class ContentResponse implements Responsable
 {
@@ -27,11 +27,11 @@ class ContentResponse implements Responsable
 	 * Create an HTTP response that represents the object.
 	 *
 	 * @param  Request $request
-	 * @return Response
+	 * @return JsonResponse
 	 */
 	public function toResponse($request)
 	{
-		return response()->json([
+		return new JsonResponse([
 			'data' => $this->content
 		]);
 	}

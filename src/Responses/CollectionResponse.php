@@ -3,16 +3,17 @@
 namespace MichielKempen\HttpHelpers\Responses;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Collection;
 use MichielKempen\HttpHelpers\Transformers\Transformer;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 
-class ItemResponse implements Responsable
+class CollectionResponse implements Responsable
 {
 	/**
-	 * @var mixed
+	 * @var Collection
 	 */
-	private $model;
+	private $collection;
 
 	/**
 	 * @var Transformer
@@ -20,14 +21,14 @@ class ItemResponse implements Responsable
 	private $transformer;
 
 	/**
-	 * PaginatedResponse constructor.
+	 * CollectionResponse constructor.
 	 *
-	 * @param $model
+	 * @param Collection $collection
 	 * @param string $transformerClass
 	 */
-	public function __construct($model, string $transformerClass)
+	public function __construct(Collection $collection, string $transformerClass)
 	{
-		$this->model = $model;
+		$this->collection = $collection;
 		$this->transformer = new $transformerClass;
 	}
 
@@ -39,8 +40,12 @@ class ItemResponse implements Responsable
 	 */
 	public function toResponse($request)
 	{
+        $items = $this->collection->map(function($model) {
+            return $this->transformer->transform($model);
+        });
+
 		return new JsonResponse([
-			'data' => $this->transformer->transform($this->model)
+			'data' => $items->toArray()
 		]);
 	}
 }

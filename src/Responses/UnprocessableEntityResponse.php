@@ -3,6 +3,8 @@
 namespace MichielKempen\HttpHelpers\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UnprocessableEntityResponse implements Responsable
 {
@@ -24,11 +26,11 @@ class UnprocessableEntityResponse implements Responsable
 	/**
 	 * Create an HTTP response that represents the object.
 	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @param  Request $request
+	 * @return Response
 	 */
 	public function toResponse($request)
 	{
-		return response($this->message, 422);
+		return new Response($this->message, 422);
 	}
 }

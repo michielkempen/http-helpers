@@ -4,6 +4,8 @@ namespace MichielKempen\HttpHelpers\Responses;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use MichielKempen\HttpHelpers\Transformers\Transformer;
 
 class PaginatedResponse implements Responsable
@@ -27,14 +29,14 @@ class PaginatedResponse implements Responsable
 	public function __construct(LengthAwarePaginator $paginator, string $transformerClass)
 	{
 		$this->paginator = $paginator;
-		$this->transformer = app($transformerClass);
+		$this->transformer = new $transformerClass;
 	}
 
 	/**
 	 * Create an HTTP response that represents the object.
 	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @param  Request $request
+	 * @return JsonResponse
 	 */
 	public function toResponse($request)
 	{
@@ -42,7 +44,7 @@ class PaginatedResponse implements Responsable
 			return $this->transformer->transform($model);
 		});
 
-		return response()->json([
+		return new JsonResponse([
 			'data' => $items->toArray(),
 			'meta' => [
 				'pagination' => [
