@@ -1,10 +1,10 @@
 <?php
 
-namespace MichielKempen\HttpHelpers\Responses;
+namespace MichielKempen\LaravelHttpResponses\Responses;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
-use MichielKempen\HttpHelpers\Transformers\Transformer;
+use MichielKempen\LaravelHttpResponses\Transformers\Transformer;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 

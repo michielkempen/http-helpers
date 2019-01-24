@@ -1,11 +1,11 @@
 {
-    "name": "michielkempen/http-helpers",
+    "name": "michielkempen/laravel-http-responses",
     "description": "A set of helper classes to segregate the transformation logic from controller to separate dedicated classes.",
     "keywords": [
         "Michiel Kempen",
-        "HTTP helpers"
+        "Laravel HTTP responses"
     ],
-    "homepage": "https://github.com/michielkempen/http-helpers",
+    "homepage": "https://github.com/michielkempen/laravel-http-responses",
     "license": "MIT",
     "authors": [
         {
@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "MichielKempen\\HttpHelpers\\": "src"
+            "MichielKempen\\LaravelHttpResponses\\": "src"
         }
     }
 }

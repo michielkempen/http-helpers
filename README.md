@@ -7,7 +7,7 @@ A set of helper classes to segregate the transformation logic from controller to
 Add the package to the dependencies of your application
 
 ```
-composer require michielkempen/http-helpers
+composer require michielkempen/laravel-http-responses
 ```
 
 ## Security

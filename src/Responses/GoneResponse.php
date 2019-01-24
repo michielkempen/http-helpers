@@ -1,6 +1,6 @@
 <?php
 
-namespace MichielKempen\HttpHelpers\Responses;
+namespace MichielKempen\LaravelHttpResponses\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;

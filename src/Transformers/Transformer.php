@@ -1,6 +1,6 @@
 <?php
 
-namespace MichielKempen\HttpHelpers\Transformers;
+namespace MichielKempen\LaravelHttpResponses\Transformers;
 
 abstract class Transformer
 {

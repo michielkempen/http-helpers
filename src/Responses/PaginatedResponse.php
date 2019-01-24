@@ -1,12 +1,12 @@
 <?php
 
-namespace MichielKempen\HttpHelpers\Responses;
+namespace MichielKempen\LaravelHttpResponses\Responses;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use MichielKempen\HttpHelpers\Transformers\Transformer;
+use MichielKempen\LaravelHttpResponses\Transformers\Transformer;
 
 class PaginatedResponse implements Responsable
 {
