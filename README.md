@@ -1,4 +1,4 @@
-# HTTP helpers
+# Laravel HTTP responses
 
 A set of helper classes to segregate the transformation logic from controller to separate dedicated classes.
 
