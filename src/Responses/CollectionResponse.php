@@ -47,11 +47,12 @@ class CollectionResponse implements Responsable
 
 	/**
 	 * @param  Request $request
+	 * @return  array
 	 */
-	protected function transformData(Request $request)
+	protected function transformData(Request $request): array
 	{
 		$items = $this->collection->map(function($model) {
-            return $this->transformer->transform($model);
+            return $this->transformer->transform($request, $model);
         });
 
 		return $items->toArray();

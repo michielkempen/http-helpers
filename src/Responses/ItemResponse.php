@@ -46,9 +46,10 @@ class ItemResponse implements Responsable
 
 	/**
 	 * @param  Request $request
+	 * @return  array
 	 */
-	protected function transformData(Request $request)
+	protected function transformData(Request $request): array
 	{
-		return $this->transformer->transform($this->model);
+		return $this->transformer->transform($request, $this->model);
 	}
 }

@@ -2,11 +2,14 @@
 
 namespace MichielKempen\LaravelHttpResponses\Transformers;
 
-abstract class Transformer
+use Illuminate\Http\Request;
+
+interface Transformer
 {
 	/**
+	 * @param  Request $request
 	 * @param $model
 	 * @return array
 	 */
-	public abstract function transform($model) : array;
+	public function transform(Request $request, $model) : array;
 }
