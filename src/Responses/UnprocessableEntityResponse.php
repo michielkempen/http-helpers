@@ -11,7 +11,7 @@ class UnprocessableEntityResponse implements Responsable
 	/**
 	 * @var string
 	 */
-	private $message;
+	protected $message;
 
 	/**
 	 * BadRequestResponse constructor.

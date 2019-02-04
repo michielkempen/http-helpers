@@ -13,12 +13,12 @@ class CollectionResponse implements Responsable
 	/**
 	 * @var Collection
 	 */
-	private $collection;
+	protected $collection;
 
 	/**
 	 * @var Transformer
 	 */
-	private $transformer;
+	protected $transformer;
 
 	/**
 	 * CollectionResponse constructor.

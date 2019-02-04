@@ -12,12 +12,12 @@ class ItemResponse implements Responsable
 	/**
 	 * @var mixed
 	 */
-	private $model;
+	protected $model;
 
 	/**
 	 * @var Transformer
 	 */
-	private $transformer;
+	protected $transformer;
 
 	/**
 	 * PaginatedResponse constructor.

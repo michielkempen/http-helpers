@@ -11,7 +11,7 @@ class ContentResponse implements Responsable
 	/**
 	 * @var mixed
 	 */
-	private $content;
+	protected $content;
 
 	/**
 	 * ContentResponse constructor.

@@ -11,7 +11,7 @@ class NoContentResponse implements Responsable
 	/**
 	 * @var string
 	 */
-	private $message;
+	protected $message;
 
 	/**
 	 * BadRequestResponse constructor.

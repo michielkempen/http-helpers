@@ -13,12 +13,12 @@ class PaginatedResponse implements Responsable
 	/**
 	 * @var LengthAwarePaginator
 	 */
-	private $paginator;
+	protected $paginator;
 
 	/**
 	 * @var Transformer
 	 */
-	private $transformer;
+	protected $transformer;
 
 	/**
 	 * PaginatedResponse constructor.

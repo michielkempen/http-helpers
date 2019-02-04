@@ -11,7 +11,7 @@ class NotFoundResponse implements Responsable
 	/**
 	 * @var string
 	 */
-	private $message;
+	protected $message;
 
 	/**
 	 * BadRequestResponse constructor.
