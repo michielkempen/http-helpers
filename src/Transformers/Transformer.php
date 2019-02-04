@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 interface Transformer
 {
 	/**
-	 * @param  Request $request
 	 * @param $model
+	 * @param Request|null $request
 	 * @return array
 	 */
-	public function transform(Request $request, $model) : array;
+	public function transform($model, Request $request = null) : array;
 }
