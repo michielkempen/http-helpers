@@ -40,12 +40,8 @@ class PaginatedResponse implements Responsable
 	 */
 	public function toResponse($request)
 	{
-		$items = collect($this->paginator->items())->map(function($model) {
-			return $this->transformer->transform($model);
-		});
-
 		return new JsonResponse([
-			'data' => $items->toArray(),
+			'data' => $this->transformData($request),
 			'meta' => [
 				'pagination' => [
 					'total' => $this->paginator->total(),
@@ -55,5 +51,17 @@ class PaginatedResponse implements Responsable
 				]
 			]
 		]);
+	}
+
+	/**
+	 * @param  Request $request
+	 */
+	protected function transformData(Request $request)
+	{
+		$items = collect($this->paginator->items())->map(function($model) {
+			return $this->transformer->transform($model);
+		});
+
+		return $items->toArray();
 	}
 }

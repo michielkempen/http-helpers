@@ -40,7 +40,15 @@ class ItemResponse implements Responsable
 	public function toResponse($request)
 	{
 		return new JsonResponse([
-			'data' => $this->transformer->transform($this->model)
+			'data' => $this->transformData($request),
 		]);
+	}
+
+	/**
+	 * @param  Request $request
+	 */
+	protected function transformData(Request $request)
+	{
+		return $this->transformer->transform($this->model);
 	}
 }

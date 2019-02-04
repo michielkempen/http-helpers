@@ -40,12 +40,20 @@ class CollectionResponse implements Responsable
 	 */
 	public function toResponse($request)
 	{
-        $items = $this->collection->map(function($model) {
+        return new JsonResponse([
+			'data' => $this->transformData($request),
+		]);
+	}
+
+	/**
+	 * @param  Request $request
+	 */
+	protected function transformData(Request $request)
+	{
+		$items = $this->collection->map(function($model) {
             return $this->transformer->transform($model);
         });
 
-		return new JsonResponse([
-			'data' => $items->toArray()
-		]);
+		return $items->toArray();
 	}
 }

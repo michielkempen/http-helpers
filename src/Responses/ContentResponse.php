@@ -32,7 +32,15 @@ class ContentResponse implements Responsable
 	public function toResponse($request)
 	{
 		return new JsonResponse([
-			'data' => $this->content
+			'data' => $this->transformData($request),
 		]);
+	}
+
+	/**
+	 * @param  Request $request
+	 */
+	protected function transformData(Request $request)
+	{
+		return $this->content;
 	}
 }
