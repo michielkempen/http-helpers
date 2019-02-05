@@ -51,7 +51,7 @@ class CollectionResponse implements Responsable
 	 */
 	protected function transformData(Request $request): array
 	{
-		$items = $this->collection->map(function($model) {
+		$items = $this->collection->map(function($model) use ($request) {
             return $this->transformer->transform($model, $request);
         });
 

@@ -59,8 +59,8 @@ class PaginatedResponse implements Responsable
 	 */
 	protected function transformData(Request $request): array
 	{
-		$items = collect($this->paginator->items())->map(function($model) {
-			return $this->transformer->transform($request, $model);
+		$items = collect($this->paginator->items())->map(function($model) use ($request) {
+			return $this->transformer->transform($model, $request);
 		});
 
 		return $items->toArray();
