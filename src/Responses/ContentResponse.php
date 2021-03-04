@@ -15,6 +15,11 @@ class ContentResponse implements Responsable
 		$this->content = $content;
 	}
 
+    public static function new($content): self
+    {
+        return new static($content);
+    }
+
 	/**
 	 * Create an HTTP response that represents the object.
 	 *

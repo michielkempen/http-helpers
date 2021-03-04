@@ -3,20 +3,24 @@
 namespace MichielKempen\LaravelHttpResponses\Responses;
 
 use Illuminate\Http\JsonResponse;
-use MichielKempen\LaravelHttpResponses\Transformers\Transformer;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 
 class ItemResponse implements Responsable
 {
 	protected $model;
-	protected Transformer $transformer;
+	protected $transformer;
 
 	public function __construct($model, string $transformerClass)
 	{
 		$this->model = $model;
 		$this->transformer = new $transformerClass;
 	}
+
+    public static function new($model, string $transformerClass): self
+    {
+        return new static($model, $transformerClass);
+    }
 
 	/**
 	 * Create an HTTP response that represents the object.

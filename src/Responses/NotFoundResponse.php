@@ -15,6 +15,11 @@ class NotFoundResponse implements Responsable
 		$this->message = $message;
 	}
 
+    public static function new(string $message = ''): self
+    {
+        return new static($message);
+    }
+
 	/**
 	 * Create an HTTP response that represents the object.
 	 *
