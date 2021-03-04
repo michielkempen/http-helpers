@@ -8,20 +8,17 @@ use Illuminate\Http\Request;
 
 class ContentResponse implements Responsable
 {
-	/**
-	 * @var mixed
-	 */
 	protected $content;
 
-	/**
-	 * ContentResponse constructor.
-	 *
-	 * @param $content
-	 */
 	public function __construct($content)
 	{
 		$this->content = $content;
 	}
+
+    public static function new($content): self
+    {
+        return new static($content);
+    }
 
 	/**
 	 * Create an HTTP response that represents the object.
@@ -32,15 +29,7 @@ class ContentResponse implements Responsable
 	public function toResponse($request)
 	{
 		return new JsonResponse([
-			'data' => $this->transformData($request),
+			'data' => $this->content,
 		]);
-	}
-
-	/**
-	 * @param  Request $request
-	 */
-	protected function transformData(Request $request)
-	{
-		return $this->content;
 	}
 }

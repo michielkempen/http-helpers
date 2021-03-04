@@ -6,31 +6,22 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use MichielKempen\LaravelHttpResponses\Transformers\Transformer;
 
 class PaginatedResponse implements Responsable
 {
-	/**
-	 * @var LengthAwarePaginator
-	 */
-	protected $paginator;
-
-	/**
-	 * @var Transformer
-	 */
+	protected LengthAwarePaginator $paginator;
 	protected $transformer;
 
-	/**
-	 * PaginatedResponse constructor.
-	 *
-	 * @param LengthAwarePaginator $paginator
-	 * @param string $transformerClass
-	 */
 	public function __construct(LengthAwarePaginator $paginator, string $transformerClass)
 	{
 		$this->paginator = $paginator;
 		$this->transformer = new $transformerClass;
 	}
+
+    public static function new(LengthAwarePaginator $paginator, string $transformerClass): self
+    {
+        return new static($paginator, $transformerClass);
+    }
 
 	/**
 	 * Create an HTTP response that represents the object.
@@ -53,10 +44,6 @@ class PaginatedResponse implements Responsable
 		]);
 	}
 
-	/**
-	 * @param  Request $request
-	 * @return  array
-	 */
 	protected function transformData(Request $request): array
 	{
 		$items = collect($this->paginator->items())->map(function($model) use ($request) {

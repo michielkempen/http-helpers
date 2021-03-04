@@ -8,20 +8,17 @@ use Illuminate\Http\Response;
 
 class NoContentResponse implements Responsable
 {
-	/**
-	 * @var string
-	 */
-	protected $message;
+	protected string $message;
 
-	/**
-	 * BadRequestResponse constructor.
-	 *
-	 * @param string $message
-	 */
 	public function __construct(string $message = '')
 	{
 	    $this->message = $message;
 	}
+
+    public static function new(string $message = ''): self
+    {
+        return new static($message);
+    }
 
 	/**
 	 * Create an HTTP response that represents the object.
