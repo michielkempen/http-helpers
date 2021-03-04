@@ -10,22 +10,9 @@ use MichielKempen\LaravelHttpResponses\Transformers\Transformer;
 
 class PaginatedResponse implements Responsable
 {
-	/**
-	 * @var LengthAwarePaginator
-	 */
-	protected $paginator;
+	protected LengthAwarePaginator $paginator;
+	protected Transformer $transformer;
 
-	/**
-	 * @var Transformer
-	 */
-	protected $transformer;
-
-	/**
-	 * PaginatedResponse constructor.
-	 *
-	 * @param LengthAwarePaginator $paginator
-	 * @param string $transformerClass
-	 */
 	public function __construct(LengthAwarePaginator $paginator, string $transformerClass)
 	{
 		$this->paginator = $paginator;
@@ -53,10 +40,6 @@ class PaginatedResponse implements Responsable
 		]);
 	}
 
-	/**
-	 * @param  Request $request
-	 * @return  array
-	 */
 	protected function transformData(Request $request): array
 	{
 		$items = collect($this->paginator->items())->map(function($model) use ($request) {

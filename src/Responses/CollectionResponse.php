@@ -10,22 +10,9 @@ use Illuminate\Http\Request;
 
 class CollectionResponse implements Responsable
 {
-	/**
-	 * @var Collection
-	 */
-	protected $collection;
+	protected Collection $collection;
+	protected Transformer $transformer;
 
-	/**
-	 * @var Transformer
-	 */
-	protected $transformer;
-
-	/**
-	 * CollectionResponse constructor.
-	 *
-	 * @param Collection $collection
-	 * @param string $transformerClass
-	 */
 	public function __construct(Collection $collection, string $transformerClass)
 	{
 		$this->collection = $collection;
@@ -45,10 +32,6 @@ class CollectionResponse implements Responsable
 		]);
 	}
 
-	/**
-	 * @param  Request $request
-	 * @return  array
-	 */
 	protected function transformData(Request $request): array
 	{
 		$items = $this->collection->map(function($model) use ($request) {

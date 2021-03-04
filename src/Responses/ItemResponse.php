@@ -9,22 +9,9 @@ use Illuminate\Http\Request;
 
 class ItemResponse implements Responsable
 {
-	/**
-	 * @var mixed
-	 */
 	protected $model;
+	protected Transformer $transformer;
 
-	/**
-	 * @var Transformer
-	 */
-	protected $transformer;
-
-	/**
-	 * PaginatedResponse constructor.
-	 *
-	 * @param $model
-	 * @param string $transformerClass
-	 */
 	public function __construct($model, string $transformerClass)
 	{
 		$this->model = $model;
@@ -40,16 +27,7 @@ class ItemResponse implements Responsable
 	public function toResponse($request)
 	{
 		return new JsonResponse([
-			'data' => $this->transformData($request),
+			'data' => $this->transformer->transform($this->model, $request),
 		]);
-	}
-
-	/**
-	 * @param  Request $request
-	 * @return  array
-	 */
-	protected function transformData(Request $request): array
-	{
-		return $this->transformer->transform($this->model, $request);
 	}
 }

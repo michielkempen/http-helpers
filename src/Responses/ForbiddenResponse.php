@@ -8,16 +8,8 @@ use Illuminate\Http\Response;
 
 class ForbiddenResponse implements Responsable
 {
-	/**
-	 * @var string
-	 */
-	protected $message;
+	protected string $message;
 
-	/**
-	 * BadRequestResponse constructor.
-	 *
-	 * @param string $message
-	 */
 	public function __construct(string $message = '')
 	{
 		$this->message = $message;
